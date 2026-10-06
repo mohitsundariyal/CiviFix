@@ -1,0 +1,273 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 40px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1d4ed8;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #64748b;
+    margin: 0 15px;
+    font-weight: 500;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: #1d4ed8;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-logout {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #475569;
+}
+
+/* Container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.back-link {
+    display: inline-block;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Header & Meta */
+.ticket-header {
+    margin-bottom: 25px;
+}
+
+.ticket-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.ticket-id {
+    color: #64748b;
+    font-weight: 600;
+}
+
+.dept-tag {
+    background: #e0e7ff;
+    color: #1d4ed8;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.status-text.in-progress {
+    color: #d97706;
+    font-weight: 600;
+}
+
+.ticket-header h1 {
+    font-size: 26px;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.submitted-info {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Tracker Steps Card */
+.tracker-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 25px;
+}
+
+.tracker-card h3 {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+.tracker-steps {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.step-num {
+    width: 30px;
+    height: 30px;
+    background: #e2e8f0;
+    color: #64748b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.step.completed .step-num {
+    background: #10b981;
+    color: white;
+}
+
+.step.active .step-num {
+    background: #1d4ed8;
+    color: white;
+}
+
+.step p {
+    font-size: 13px;
+    color: #475569;
+}
+
+/* 2-Column Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
+.content-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.content-card h2 {
+    font-size: 16px;
+    color: #0f172a;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 8px;
+}
+
+.description-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* Image Box */
+.image-preview-box {
+    background: #f1f5f9;
+    border: 1px dashed #cbd5e1;
+    padding: 30px;
+    text-align: center;
+    color: #64748b;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Activity Logs */
+.log-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.log-item strong {
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.log-item small {
+    display: block;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.log-item p {
+    font-size: 13px;
+    color: #475569;
+}
+
+/* Reply Box */
+.reply-box {
+    margin-top: 15px;
+}
+
+.reply-box textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #1d4ed8;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* Sidebar Info */
+.sidebar-content .content-card p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #475569;
+}
+
+.timer-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1d4ed8;
+}
+
+.brand-logo{
+    height:35px;
+    width:35px;
+}

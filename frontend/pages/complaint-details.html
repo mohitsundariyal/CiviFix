@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiviFix - Ticket Details</title>
+    <link rel="stylesheet" href="../css/complaint-details.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="logo">
+            <img class= "brand-logo" src="../images/logo/CiviFix-logo.svg" alt="CiviFix Logo" onerror="this.style.display='none'">
+            <h2>CiviFix</h2>
+        </div>
+        <nav class="nav-links">
+            <a href="user-dashboard.html">Dashboard</a>
+            <a href="report-issue.html">Report Issue</a>
+            <a href="#">Emergency Contacts</a>
+        </nav>
+        <div class="user-profile">
+            <span class="user-name">Eleanor Vance</span>
+            <button class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="dashboard-container">
+
+        <!-- Back Navigation -->
+        <a href="user-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <!-- Ticket Header Title -->
+        <div class="ticket-header">
+            <div class="ticket-meta">
+                <span class="ticket-id">#NY-8834</span>
+                <span class="dept-tag">Roads & Pavements</span>
+                <span class="status-text in-progress">&bull; In Progress</span>
+            </div>
+            <h1>Pothole & Road Hazard on Elm Street</h1>
+            <p class="submitted-info">Submitted on Oct 18, 2025 by Eleanor Vance</p>
+        </div>
+
+        <!-- Basic Lifecycle Progress Tracker -->
+        <section class="tracker-card">
+            <h3>Ticket Progress</h3>
+            <div class="tracker-steps">
+                <div class="step completed">
+                    <div class="step-num">&#10003;</div>
+                    <p>Request Logged</p>
+                </div>
+                <div class="step completed">
+                    <div class="step-num">&#10003;</div>
+                    <p>Under Review</p>
+                </div>
+                <div class="step active">
+                    <div class="step-num">3</div>
+                    <p>In Progress</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Resolved</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Grid Layout (2 Columns) -->
+        <div class="details-grid">
+
+            <!-- Left Column: Problem Details & Activity -->
+            <div class="main-content">
+                
+                <!-- Description Card -->
+                <div class="content-card">
+                    <h2>Problem Description</h2>
+                    <p class="description-text">
+                        Deep, jagged pothole situated in the eastbound lane directly in front of residential driveways 410-414 Elm Street. Measures approximately 3 feet in diameter and causes severe hazard for daily traffic.
+                    </p>
+                </div>
+
+                <!-- Photo Evidence Card -->
+                <div class="content-card">
+                    <h2>Photo Evidence</h2>
+                    <div class="image-preview-box">
+                        <p>[ Pothole_Image_Evidence.jpg ]</p>
+                    </div>
+                </div>
+
+                <!-- Updates & Dispatch Log -->
+                <div class="content-card">
+                    <h2>Activity & Updates Log</h2>
+                    <div class="log-list">
+                        <div class="log-item">
+                            <strong>Superintendent J. Alvarez</strong>
+                            <small>Today at 08:30 AM</small>
+                            <p>Asphalt crew deployed to 412 Elm St. Milling out the crumbling perimeter now.</p>
+                        </div>
+                        <div class="log-item">
+                            <strong>Central Bureau of Street Maintenance</strong>
+                            <small>Oct 18, 2025</small>
+                            <p>Ticket validated and escalated to repair team.</p>
+                        </div>
+                    </div>
+
+                    <!-- Add Comment / Reply -->
+                    <div class="reply-box">
+                        <textarea rows="3" placeholder="Add a follow-up note or inquiry..."></textarea>
+                        <button class="btn-primary">Send Note</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Sidebar Location & Details -->
+            <div class="sidebar-content">
+
+                <div class="content-card">
+                    <h2>Incident Location</h2>
+                    <p><strong>Address:</strong> 412 Elm St, Ward 7</p>
+                    <p><strong>Landmark:</strong> Near 4th & 5th Avenues</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Estimated Resolution</h2>
+                    <p class="timer-text">Within 24-48 Hours</p>
+                </div>
+
+                <div class="content-card">
+                    <h2>Need Assistance?</h2>
+                    <p>Call Helpline: <strong>311</strong></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
