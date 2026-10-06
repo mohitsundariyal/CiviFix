@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiviFix - Citizen Dashboard</title>
+    <link rel="stylesheet" href="../css/user-dashboard.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="../images/logo/CiviFix-logo.svg" alt="CiviFix Logo" onerror="this.style.display='none'">
+            <h2>CiviFix</h2>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Dashboard</a>
+            <a href="report-issue.html">Report Issue</a>
+            <a href="#">Emergency Contacts</a>
+        </nav>
+        <div class="user-profile">
+            <span class="user-name">Eleanor Vance</span>
+            <button class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="dashboard-container">
+        
+        <!-- Top Section Header -->
+        <div class="page-header">
+            <div>
+                <h1>Citizen Dashboard</h1>
+                <p>Track, monitor, and submit municipal service tickets.</p>
+            </div>
+            <button class="btn-primary">+ New Complaint</button>
+        </div>
+
+        <!-- Simple Clean Stats Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Complaints</h3>
+                <p class="stat-number">14</p>
+            </div>
+            <div class="stat-card">
+                <h3>In Progress</h3>
+                <p class="stat-number">4</p>
+            </div>
+            <div class="stat-card">
+                <h3>Resolved</h3>
+                <p class="stat-number">9</p>
+            </div>
+        </section>
+
+        <!-- Search & Filter Controls -->
+        <section class="controls-section">
+            <input type="text" class="search-input" placeholder="Search title, description, or #ID...">
+            <div class="filter-tabs">
+                <button class="tab active">All (14)</button>
+                <button class="tab">In Progress (4)</button>
+                <button class="tab">Resolved (9)</button>
+            </div>
+        </section>
+
+        <!-- Complaints Table -->
+        <section class="table-container">
+            <table class="tickets-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID & Title</th>
+                        <th>Department</th>
+                        <th>Reported Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Deep pothole near 5th & Elm Ave</strong><br>
+                            <small class="ticket-id">#NY-8834</small>
+                        </td>
+                        <td><span class="dept-text">Roads & Pavements</span></td>
+                        <td>Oct 18, 2025</td>
+                        <td><span class="status-text in-progress">In Progress</span></td>
+                        <td><a href="#" class="link-action">View &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Broken street light flickering on Elm St</strong><br>
+                            <small class="ticket-id">#NY-8829</small>
+                        </td>
+                        <td><span class="dept-text">Street Lighting</span></td>
+                        <td>Oct 15, 2025</td>
+                        <td><span class="status-text in-progress">In Progress</span></td>
+                        <td><a href="#" class="link-action">View &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Overflowing waste bin outside Central Library</strong><br>
+                            <small class="ticket-id">#NY-8812</small>
+                        </td>
+                        <td><span class="dept-text">Sanitation & Waste</span></td>
+                        <td>Oct 10, 2025</td>
+                        <td><span class="status-text resolved">Resolved</span></td>
+                        <td><a href="#" class="link-action">View &rarr;</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</body>
+</html>

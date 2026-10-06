@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiviFix - File a Complaint</title>
+    <link rel="stylesheet" href="../css/report-issue.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="../images/logo/CiviFix-logo.svg" alt="CiviFix Logo" onerror="this.style.display='none'" class="brand-logo"/>
+            <h2>CiviFix</h2>
+        </div>
+        <nav class="nav-links">
+            <a href="user-dashboard.html">Dashboard</a>
+            <a href="#" class="active">Report Issue</a>
+            <a href="#">Emergency Contacts</a>
+        </nav>
+        <div class="user-profile">
+            <span class="user-name">Eleanor Vance</span>
+            <button class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="dashboard-container">
+        
+        <!-- Navigation Back Link -->
+        <a href="user-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+
+        <!-- Header Title -->
+        <div class="form-header">
+            <h1>File a Municipal Complaint</h1>
+            <p>Submit service requests directly to municipal repair crews.</p>
+        </div>
+
+        <!-- Form Layout (2 Columns) -->
+        <form class="complaint-form">
+            <div class="form-grid">
+                
+                <!-- Left Column: Incident Details -->
+                <div class="form-section">
+                    <h2>1. Incident Details</h2>
+
+                    <div class="form-group">
+                        <label>Complaint Title *</label>
+                        <input type="text" placeholder="e.g., Deep road pothole on Elm St" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Municipal Category *</label>
+                        <div class="category-grid">
+                            <label class="category-card active">
+                                <input type="radio" name="category" checked hidden>
+                                <strong>Pothole / Road</strong>
+                            </label>
+                            <label class="category-card">
+                                <input type="radio" name="category" hidden>
+                                <strong>Garbage / Waste</strong>
+                            </label>
+                            <label class="category-card">
+                                <input type="radio" name="category" hidden>
+                                <strong>Street Light</strong>
+                            </label>
+                            <label class="category-card">
+                                <input type="radio" name="category" hidden>
+                                <strong>Water & Drain</strong>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Detailed Description *</label>
+                        <textarea rows="4" placeholder="Describe the issue in detail..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Photo Evidence (Optional)</label>
+                        <div class="upload-box">
+                            <p>Click to upload photo or drag and drop</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Location -->
+                <div class="form-section">
+                    <h2>2. Location Details</h2>
+
+                    <div class="form-group">
+                        <label>Street Address / Landmark *</label>
+                        <input type="text" placeholder="Enter street address or landmark" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Urgency Level</label>
+                        <div class="urgency-options">
+                            <label class="urgency-btn"><input type="radio" name="urgency"> Low</label>
+                            <label class="urgency-btn"><input type="radio" name="urgency" checked> Moderate</label>
+                            <label class="urgency-btn"><input type="radio" name="urgency"> High</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked> Receive updates via SMS / Email
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <a href="index.html" class="btn-secondary">Cancel</a>
+                <button type="submit" class="btn-primary">Submit Complaint</button>
+            </div>
+        </form>
+
+    </main>
+
+</body>
+</html>
