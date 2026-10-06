@@ -12,8 +12,8 @@
 }
 /*header container*/
 .header-container {
-    width:90%;
-    max-width:1200px;
+    width:95%;
+    max-width:1700px;
     margin:0 auto;
     
     display:flex;
@@ -50,7 +50,7 @@
 }
 
 .nav-text{
-    font-size:15px;
+    font-size:16px;
     color:rgb(83, 81, 81);
     font-weight:600;
     text-decoration:none;
@@ -64,7 +64,7 @@
 }
 
 .login-link{
-    font-size:15px;
+    font-size:16px;
     font-weight:600;
     text-decoration:none;
 
@@ -102,11 +102,61 @@
 }
 
 .user-icon{
-    height:18px;
-    width:18px;
+    height:16px;
+    width:16px;
     object-fit:contain;
 }
 
 
+/*hero section*/
+.hero{
+    width: 100%;
+    padding: 76px 0 70px;
+    background-color: #f8f9ff;
+}
 
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.hero-heading{
+    font-size:40px;
+    font-weight:700;
+}
+
+.hero-desc{
+    font-size:18px;
+    font-weight:500;
+    color:rgb(135, 133, 133);
+    padding:20px 0 20px;
+}
+
+.hero-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding-top:30px;
+}
+
+.hero-btn{
+    padding:19px 16px;
+    border-radius:7px;
+
+    text-decoration:none;
+    font-size:16px;
+    font-weight:550px;
+}
+
+.primary-btn{
+    background:rgb(92, 92, 234);
+    width:60%;
+    color:white;
+}
+.secondary-btn{
+    width:80px;
+    background:white;
+    color:rgb(92, 92, 234);
+}
