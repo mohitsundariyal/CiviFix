@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+/*header section*/
+.site-header{
+    width:100%;
+    height:64px;
+    background: #ffffff;
+    border-bottom:2px solid #e5e7eb;
+}
+/*header container*/
+.header-container {
+    width:90%;
+    max-width:1200px;
+    margin:0 auto;
+    
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+/*logo and Name*/
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo{
+    height:55px;
+    width:55px;
+    object-fit:contain; 
+}
+.brand-name{
+    font-size:18px;
+    font-weight:Bold;
+}
+
+
+/*Header Navigation*/
+.main-nav{
+    display:flex;
+    align-items:center;
+    gap:30px;  
+}
+
+.main-nav a:hover{
+    color:rgb(166, 164, 164);
+}
+
+.nav-text{
+    font-size:15px;
+    color:rgb(83, 81, 81);
+    font-weight:600;
+    text-decoration:none;
+}
+
+/*Header Actions*/
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.login-link{
+    font-size:15px;
+    font-weight:600;
+    text-decoration:none;
+
+}
+.login-link:hover {
+    color: #1554d1;
+}
+
+.register-btn{
+    background:rgb(59, 59, 216);
+    color:white;
+    padding: 9px 16px;
+    border-radius:7px;
+    text-decoration:none;
+
+}
+.register-btn:hover {
+    background: #1047b8;
+}
+
+.profile-btn {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #1554d1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.user-icon{
+    height:18px;
+    width:18px;
+    object-fit:contain;
+}
+
+
+
+
