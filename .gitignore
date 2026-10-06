@@ -1,0 +1,13 @@
+# Spring Boot / Java
+target/
+*.class
+.idea/
+*.iml
+
+# Secrets
+.env
+application-local.properties
+
+# OS files
+.DS_Store
+Thumbs.db
