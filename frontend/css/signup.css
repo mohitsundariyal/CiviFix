@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9ff;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Signup Container */
+
+.signup-container {
+    width: 400px;
+    margin: 50px auto;
+}
+
+
+/* Logo */
+
+.signup-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.signup-logo img {
+    width: 45px;
+    height: 45px;
+}
+
+.signup-logo span {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* Signup Card */
+
+.signup-card {
+    background-color: white;
+
+    padding: 30px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+
+/* Heading */
+
+.signup-card h1 {
+    text-align: center;
+
+    font-size: 28px;
+
+    color: #071d3a;
+}
+
+.signup-subtitle {
+    text-align: center;
+
+    margin-top: 8px;
+    margin-bottom: 25px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* Form */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
+
+/* Signup Button */
+
+.signup-btn {
+    width: 100%;
+
+    padding: 11px;
+
+    background-color: #1554d1;
+
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.signup-btn:hover {
+    background-color: #1047b8;
+}
+
+
+/* Login */
+
+.login-text {
+    text-align: center;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    color: #666;
+}
+
+.login-text a {
+    color: #1554d1;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
