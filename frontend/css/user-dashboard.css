@@ -225,3 +225,9 @@ body {
     font-weight: 600;
     font-size: 13px;
 }
+
+button.btn-primary a.new-complaint-btn {
+    color: #ffffff !important;
+    text-decoration: none;
+    display: inline-block; 
+}
