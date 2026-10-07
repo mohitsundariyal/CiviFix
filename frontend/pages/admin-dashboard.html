@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiviFix - Basic Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+<body>
+
+    <!-- Simple Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h2>CiviFix <small>(Admin)</small></h2>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Complaints</a>
+            <a href="#">Report Issue</a>
+            <a href="#">Emergency Contacts</a>
+        </nav>
+        <div class="user-profile">
+            <span>Eleanor Vance (Ward 7)</span>
+            <button class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="dashboard-container">
+        
+        <!-- Controls -->
+        <section class="controls-section">
+            <input type="text" class="search-input" placeholder="Search title, description, or location...">
+            <div class="filter-tabs">
+                <button class="tab active">All (14)</button>
+                <button class="tab">In Progress (4)</button>
+                <button class="tab">Resolved (9)</button>
+            </div>
+        </section>
+
+        <!-- Basic Complaints Table -->
+        <section class="table-container">
+            <table class="tickets-table">
+                <thead>
+                    <tr>
+                        <th>TITLE & LOCATION</th>
+                        <th>CATEGORY</th>
+                        <th>USER</th>
+                        <th>DATE & TIME</th>
+                        <th>STATUS DISPATCH</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr>
+                        <td>
+                            <strong>Deep pothole near 5th & Elm Ave</strong>
+                            <div class="subtext">5th Ave & Elm St intersection &bull; Ward 7</div>
+                        </td>
+                        <td>Roads & Pavements</td>
+                        <td>
+                            <strong>Eleanor Vance</strong>
+                            <div class="subtext">Verified Citizen</div>
+                        </td>
+                        <td>
+                            Oct 19, 2025<br>
+                            <small class="subtext">08:30 AM (2h ago)</small>
+                        </td>
+                        <td><span class="status-text in-progress">In Progress</span></td>
+                        <td>
+                            <div class="action-cell">
+                                <button class="btn-update">Update</button>
+                                <a href="ticket-details.html" class="link-view">View &rarr;</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2 -->
+                    <tr>
+                        <td>
+                            <strong>Water main leak flooding sidewalk</strong>
+                            <div class="subtext">412 Maple Boulevard &bull; Ward 7</div>
+                        </td>
+                        <td>Water Supply</td>
+                        <td>
+                            <strong>Marcus Chen</strong>
+                            <div class="subtext">Merchant Assoc.</div>
+                        </td>
+                        <td>
+                            Oct 19, 2025<br>
+                            <small class="subtext">07:48 AM (3h ago)</small>
+                        </td>
+                        <td><span class="status-text pending">Pending</span></td>
+                        <td>
+                            <div class="action-cell">
+                                <button class="btn-update">Update</button>
+                                <a href="ticket-details.html" class="link-view">View &rarr;</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3 -->
+                    <tr>
+                        <td>
+                            <strong>Flickering high-voltage street light</strong>
+                            <div class="subtext">Corner of 9th & Lincoln &bull; Ward 7</div>
+                        </td>
+                        <td>Street Lighting</td>
+                        <td>
+                            <strong>Sarah Jenkins</strong>
+                            <div class="subtext">Neighborhood Lead</div>
+                        </td>
+                        <td>
+                            Oct 18, 2025<br>
+                            <small class="subtext">09:42 AM (Yesterday)</small>
+                        </td>
+                        <td><span class="status-text resolved">Resolved</span></td>
+                        <td>
+                            <div class="action-cell">
+                                <button class="btn-update">Update</button>
+                                <a href="ticket-details.html" class="link-view">View &rarr;</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4 -->
+                    <tr>
+                        <td>
+                            <strong>Overflowing public waste receptacle</strong>
+                            <div class="subtext">Riverview Park Promenade &bull; Ward 7</div>
+                        </td>
+                        <td>Sanitation</td>
+                        <td>
+                            <strong>David Ross</strong>
+                            <div class="subtext">Citizen</div>
+                        </td>
+                        <td>
+                            Oct 18, 2025<br>
+                            <small class="subtext">02:15 PM (Yesterday)</small>
+                        </td>
+                        <td><span class="status-text in-progress">In Progress</span></td>
+                        <td>
+                            <div class="action-cell">
+                                <button class="btn-update">Update</button>
+                                <a href="ticket-details.html" class="link-view">View &rarr;</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</body>
+</html>
