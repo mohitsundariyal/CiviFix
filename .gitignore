@@ -1,12 +1,21 @@
+
 # Spring Boot / Java
 target/
 *.class
 .idea/
 *.iml
 
-# Secrets
+# VS Code
+.vscode/
+
+# Secrets and local configuration
 .env
+.env.*
+!.env.example
 application-local.properties
+
+# Logs
+*.log
 
 # OS files
 .DS_Store
