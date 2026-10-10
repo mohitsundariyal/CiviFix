@@ -14,7 +14,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+        this.userRepository = userRepository;  //methods
         this.passwordEncoder = passwordEncoder;
     }
 
