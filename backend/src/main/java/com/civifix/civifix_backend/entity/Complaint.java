@@ -34,4 +34,12 @@ public class Complaint {
     @JoinColumn(name="user_id")
     private User user;
 
+
+    @Enumerated(EnumType.STRING)
+    private Priority priority;
+
+    private String detectedIssue;
+
+    private String imagePath;
+
 }
