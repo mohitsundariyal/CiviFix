@@ -1,16 +1,16 @@
 package com.civifix.civifix_backend.controller;
 
 import com.civifix.civifix_backend.dto.ComplaintRequestDto;
-import com.civifix.civifix_backend.dto.ComplaintResponseDto;
 import com.civifix.civifix_backend.entity.Complaint;
 import com.civifix.civifix_backend.service.ComplaintService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -23,12 +23,13 @@ public class ComplaintController {
         this.complaintService = complaintService;
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Map<String, Object>> create(
-            @Valid @RequestBody ComplaintRequestDto request,
+            @Valid @ModelAttribute ComplaintRequestDto request,
+            @RequestParam("image") MultipartFile image,
             Authentication authentication) {
 
-        Complaint saved = complaintService.createComplaint(request, authentication.getName());
+        Complaint saved = complaintService.createComplaint(request, image, authentication.getName());
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
