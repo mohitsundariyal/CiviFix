@@ -9,3 +9,4 @@ public interface UserRepository extends JpaRepository<User, Long> { //save() fin
     boolean existsByEmail(String email);  //srping boot read name and create SQL query itself
     Optional<User> findByEmail(String email);
 }
+
