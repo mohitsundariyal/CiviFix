@@ -1,6 +1,7 @@
 package com.civifix.civifix_backend.service;
 
 import com.civifix.civifix_backend.dto.ComplaintRequestDto;
+import com.civifix.civifix_backend.dto.ComplaintResponseDto;
 import com.civifix.civifix_backend.entity.Complaint;
 import com.civifix.civifix_backend.entity.ComplaintStatus;
 import com.civifix.civifix_backend.entity.User;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ComplaintService {
@@ -34,5 +36,14 @@ public class ComplaintService {
         complaint.setUser(user);
         return complaintRepository.save(complaint);
     }
+
+    public List<ComplaintResponseDto> getMyComplaints(String email) {
+        return complaintRepository.findByUserEmailOrderByCreatedAtDesc(email)
+                .stream()
+                .map(ComplaintResponseDto::from)
+                .toList();
+    }
+
+
 
 }

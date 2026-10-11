@@ -1,6 +1,7 @@
 package com.civifix.civifix_backend.controller;
 
 import com.civifix.civifix_backend.dto.ComplaintRequestDto;
+import com.civifix.civifix_backend.dto.ComplaintResponseDto;
 import com.civifix.civifix_backend.entity.Complaint;
 import com.civifix.civifix_backend.service.ComplaintService;
 import jakarta.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,4 +37,5 @@ public class ComplaintController {
                         "id", saved.getId()
                 ));
     }
+
 }
