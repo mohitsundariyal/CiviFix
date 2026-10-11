@@ -4,6 +4,7 @@ package com.civifix.civifix_backend.controller;
 import com.civifix.civifix_backend.dto.LoginRequest;
 import com.civifix.civifix_backend.dto.RegisterRequest;
 import com.civifix.civifix_backend.entity.User;
+import com.civifix.civifix_backend.security.JwtUtil;
 import com.civifix.civifix_backend.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ import java.util.Map;
 @RequestMapping("api/auth")
 public class AuthController {
     private final AuthService authService;
-
-    AuthController(AuthService authService){
+    private final JwtUtil jwtUtil;
+    AuthController(AuthService authService,JwtUtil jwtUtil){
+        this.jwtUtil = jwtUtil;
         this.authService = authService;
     }
 
@@ -33,10 +35,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@Valid @RequestBody LoginRequest request) {
         User user = authService.login(request);
+        String token = jwtUtil.genrateJwtToken(user);
         return ResponseEntity.ok(Map.of(
                 "message", "Login successful",
                 "fullName", user.getFullName(),
-                "role", user.getRole().name()
+                "role", user.getRole().name(),
+                "token",token
         ));
     }
 

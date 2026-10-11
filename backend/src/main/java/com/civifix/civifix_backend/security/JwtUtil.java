@@ -2,7 +2,6 @@ package com.civifix.civifix_backend.security;
 
 
 import com.civifix.civifix_backend.entity.User;
-import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
