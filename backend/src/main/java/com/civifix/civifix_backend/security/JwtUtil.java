@@ -2,6 +2,7 @@ package com.civifix.civifix_backend.security;
 
 
 import com.civifix.civifix_backend.entity.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,14 @@ public class JwtUtil {
     public String genrateJwtToken(User user){
         Date currentDateTime = new Date();
         return Jwts.builder().subject(user.getEmail()).claim("role",user.getRole().name()).issuedAt(currentDateTime).expiration( new Date(currentDateTime.getTime() + expirationMs)).signWith(key).compact();
+    }
+
+    public Claims parseToken(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
 
