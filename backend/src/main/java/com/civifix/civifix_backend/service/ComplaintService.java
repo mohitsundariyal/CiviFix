@@ -4,6 +4,7 @@ import com.civifix.civifix_backend.dto.ComplaintRequestDto;
 import com.civifix.civifix_backend.dto.ComplaintResponseDto;
 import com.civifix.civifix_backend.entity.Complaint;
 import com.civifix.civifix_backend.entity.ComplaintStatus;
+import com.civifix.civifix_backend.entity.Priority;
 import com.civifix.civifix_backend.entity.User;
 import com.civifix.civifix_backend.repository.ComplaintRepository;
 import com.civifix.civifix_backend.repository.UserRepository;
@@ -28,12 +29,14 @@ public class ComplaintService {
     @Value("${file.upload-dir}")
     private String uploadDir;
 
+    private final IssueDetectionService issueDetectionService;
     private final ComplaintRepository complaintRepository;
     private final UserRepository userRepository;
 
-    public ComplaintService(ComplaintRepository complaintRepository,UserRepository userRepository){
+    public ComplaintService(ComplaintRepository complaintRepository,UserRepository userRepository,IssueDetectionService issueDetectionService){
         this.complaintRepository = complaintRepository;
         this.userRepository = userRepository;
+        this.issueDetectionService = issueDetectionService;
     }
 
     public Complaint createComplaint(ComplaintRequestDto requestDto,MultipartFile image, String email){
@@ -45,7 +48,21 @@ public class ComplaintService {
         complaint.setCategory(requestDto.getCategory());
         complaint.setCreatedAt(LocalDateTime.now());
         complaint.setStatus(ComplaintStatus.PENDING);
-        complaint.setImagePath(saveImage(image));
+
+        String fileName = saveImage(image);
+        complaint.setImagePath(fileName);
+
+        String issue = issueDetectionService.detect(Paths.get(uploadDir).resolve(fileName));
+
+        if (issue == null) {
+            complaint.setDetectedIssue("Unknown");
+            complaint.setPriority(Priority.MEDIUM);
+        } else {
+            complaint.setDetectedIssue(issue);
+            complaint.setPriority(issueDetectionService.getPriority(issue));
+        }
+
+
         complaint.setUser(user);
         return complaintRepository.save(complaint);
     }

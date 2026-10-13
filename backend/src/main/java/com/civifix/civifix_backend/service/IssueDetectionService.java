@@ -6,6 +6,7 @@ import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtException;
 import ai.onnxruntime.OrtSession;
 
+import com.civifix.civifix_backend.entity.Priority;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.nio.FloatBuffer;
 import java.nio.file.Path;
 import java.util.Collections;
+import java.util.Map;
 
 @Service
 public class IssueDetectionService {
@@ -27,6 +29,18 @@ public class IssueDetectionService {
     private OrtEnvironment env;
     private OrtSession.SessionOptions options;
     private OrtSession session;
+
+    private static final Map<String, Priority> PRIORITY_MAP = Map.of(
+            "DamagedElectricalPoles", Priority.HIGH,
+            "FallenTrees", Priority.HIGH,
+            "Damaged concrete structures", Priority.HIGH,
+            "Potholes and RoadCracks", Priority.HIGH,
+            "DamagedRoadSigns", Priority.MEDIUM,
+            "DeadAnimalsPollution", Priority.MEDIUM,
+            "Garbage", Priority.LOW,
+            "Graffitti", Priority.LOW,
+            "IllegalParking", Priority.LOW
+    );
 
     @PostConstruct
     public void loadModel() {
@@ -47,6 +61,9 @@ public class IssueDetectionService {
             System.err.println("Failed to load YOLO model!");
             e.printStackTrace();
         }
+    }
+    public Priority getPriority(String issue) {
+        return PRIORITY_MAP.getOrDefault(issue, Priority.MEDIUM);
     }
 
     @PreDestroy
