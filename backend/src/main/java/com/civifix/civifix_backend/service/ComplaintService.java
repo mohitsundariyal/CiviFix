@@ -1,5 +1,6 @@
 package com.civifix.civifix_backend.service;
 
+import com.civifix.civifix_backend.dto.AdminComplaintDto;
 import com.civifix.civifix_backend.dto.ComplaintRequestDto;
 import com.civifix.civifix_backend.dto.ComplaintResponseDto;
 import com.civifix.civifix_backend.entity.Complaint;
@@ -14,13 +15,13 @@ import java.nio.file.Files;
 import org.springframework.beans.factory.annotation.Value;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.UUID;
+import java.util.*;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class ComplaintService {
@@ -102,6 +103,45 @@ public class ComplaintService {
         } catch (IOException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Could not save image");
         }
+    }
+
+    public Map<String, List<AdminComplaintDto>> responseAdmin(){
+        List <AdminComplaintDto> high = new ArrayList<>();
+        List <AdminComplaintDto> low = new ArrayList<>();
+        List <AdminComplaintDto> medium = new ArrayList<>();
+
+        List<Complaint> complaints = complaintRepository.findAllByOrderByCreatedAtDesc();
+
+        for(int i=0;i<complaints.size();i++){
+            Complaint c = complaints.get(i);
+            AdminComplaintDto dto = new AdminComplaintDto();
+            dto.setId(c.getId());
+            dto.setUserName(c.getUser().getFullName());
+            dto.setTitle(c.getTitle());
+            dto.setAddress(c.getAddress());
+            dto.setUserEmail(c.getUser().getEmail());
+            if(c.getPriority()==Priority.HIGH){
+                dto.setPriority("HIGH");
+                high.add(dto);
+            }else if(c.getPriority()==Priority.LOW){
+                dto.setPriority("LOW");
+                low.add(dto);
+            }else{
+                dto.setPriority("MEDIUM");
+                medium.add(dto);
+            }
+
+
+        }
+
+        Map<String, List<AdminComplaintDto>> result  = new LinkedHashMap<>();
+        result.put("HIGH", high);
+        result.put("LOW",low);
+        result.put("MEDIUM",medium);
+
+        return result;
+
+
     }
 
 
