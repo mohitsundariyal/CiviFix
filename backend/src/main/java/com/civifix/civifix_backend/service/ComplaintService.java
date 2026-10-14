@@ -116,8 +116,11 @@ public class ComplaintService {
             Complaint c = complaints.get(i);
             AdminComplaintDto dto = new AdminComplaintDto();
             dto.setId(c.getId());
+            dto.setCreatedAt(c.getCreatedAt());
+            dto.setStatus(c.getStatus());
             dto.setUserName(c.getUser().getFullName());
             dto.setTitle(c.getTitle());
+            dto.setCategory(c.getCategory());
             dto.setAddress(c.getAddress());
             dto.setUserEmail(c.getUser().getEmail());
             if(c.getPriority()==Priority.HIGH){
