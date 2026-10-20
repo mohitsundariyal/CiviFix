@@ -382,3 +382,13 @@ body {
     border: 1px solid #d1d5db;
     font-weight: 500;
 }
+
+
+
+/* Map */
+#map{
+    height:500px;
+    width:500px;
+    border-radius:14px;
+    border:2px solid rgb(122, 122, 122);
+}

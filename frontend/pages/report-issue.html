@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CiviFix - File a Complaint</title>
+
+    
+    <!-- leaflet header files-->
     <link rel="stylesheet" href="../css/report-issue.css">
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 </head>
 <body>
 
@@ -21,13 +30,13 @@
         </nav>
         <div class="user-profile">
             <span class="user-name">Eleanor Vance</span>
-            <button class="btn-logout">Logout</button>
+            <button class="btn-logout" type="button">Logout</button>
         </div>
     </header>
 
     <!-- Main Container -->
     <main class="dashboard-container">
-        
+
         <!-- Navigation Back Link -->
         <a href="user-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
 
@@ -38,50 +47,35 @@
         </div>
 
         <!-- Form Layout (2 Columns) -->
-        <form class="complaint-form">
+        <form class="complaint-form" id="complaint-form">
+
             <div class="form-grid">
-                
+
                 <!-- Left Column: Incident Details -->
                 <div class="form-section">
                     <h2>1. Incident Details</h2>
 
                     <div class="form-group">
                         <label>Complaint Title *</label>
-                        <input type="text" placeholder="e.g., Deep road pothole on Elm St" required>
+                        <input type="text" placeholder="e.g., Deep road pothole on Elm St" id="title" required>
                     </div>
 
                     <div class="form-group">
                         <label>Municipal Category *</label>
-                        <div class="category-grid">
-                            <label class="category-card active">
-                                <input type="radio" name="category" checked hidden>
-                                <strong>Pothole / Road</strong>
-                            </label>
-                            <label class="category-card">
-                                <input type="radio" name="category" hidden>
-                                <strong>Garbage / Waste</strong>
-                            </label>
-                            <label class="category-card">
-                                <input type="radio" name="category" hidden>
-                                <strong>Street Light</strong>
-                            </label>
-                            <label class="category-card">
-                                <input type="radio" name="category" hidden>
-                                <strong>Water & Drain</strong>
-                            </label>
-                        </div>
+                        <input type="radio" name="category" value="pothole / road" required> Potholes / Road Damage<br>
+                        <input type="radio" name="category" value="garbage"> Garbage Collection<br>
+                        <input type="radio" name="category" value="streetlight"> Streetlight Issues<br>
+                        <input type="radio" name="category" value="drainage"> Drainage Problems<br>
                     </div>
 
                     <div class="form-group">
                         <label>Detailed Description *</label>
-                        <textarea rows="4" placeholder="Describe the issue in detail..."></textarea>
+                        <textarea rows="4" id="detailedDescription" required placeholder="Describe the issue in detail..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label>Photo Evidence (Optional)</label>
-                        <div class="upload-box">
-                            <p>Click to upload photo or drag and drop</p>
-                        </div>
+                        <label>Photo Evidence *</label>
+                        <input type="file" name="photo" accept="image/*" id="image" required>
                     </div>
                 </div>
 
@@ -91,35 +85,24 @@
 
                     <div class="form-group">
                         <label>Street Address / Landmark *</label>
-                        <input type="text" placeholder="Enter street address or landmark" required>
+                        <input type="text" placeholder="Enter street address or landmark" id="address" required>
                     </div>
 
-                    <div class="form-group">
-                        <label>Urgency Level</label>
-                        <div class="urgency-options">
-                            <label class="urgency-btn"><input type="radio" name="urgency"> Low</label>
-                            <label class="urgency-btn"><input type="radio" name="urgency" checked> Moderate</label>
-                            <label class="urgency-btn"><input type="radio" name="urgency"> High</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" checked> Receive updates via SMS / Email
-                        </label>
-                    </div>
+                    <div id="map"></div>
                 </div>
 
             </div>
 
             <!-- Form Actions -->
             <div class="form-actions">
-                <a href="index.html" class="btn-secondary">Cancel</a>
+                <a href="user-dashboard.html" class="btn-secondary">Cancel</a>
                 <button type="submit" class="btn-primary">Submit Complaint</button>
             </div>
+
         </form>
 
     </main>
 
+    <script src="../js/reportIssue.js"></script>
 </body>
 </html>
