@@ -1,7 +1,9 @@
 package com.civifix.civifix_backend.controller;
 
+import com.civifix.civifix_backend.dto.ComplaintDetailDto;
 import com.civifix.civifix_backend.dto.ComplaintRequestDto;
 import com.civifix.civifix_backend.entity.Complaint;
+import com.civifix.civifix_backend.service.ComplaintDetails;
 import com.civifix.civifix_backend.service.ComplaintService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -16,11 +18,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/complaints")
 public class ComplaintController {
-
+    private final ComplaintDetails complaintDetails;
     private final ComplaintService complaintService;
 
-    public ComplaintController(ComplaintService complaintService) {
+    public ComplaintController(ComplaintService complaintService,ComplaintDetails complaintDetails) {
         this.complaintService = complaintService;
+        this.complaintDetails = complaintDetails;
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -37,6 +40,10 @@ public class ComplaintController {
                         "message", "Complaint submitted",
                         "id", saved.getId()
                 ));
+    }
+    @GetMapping("/{id}")
+    public ComplaintDetailDto details(@PathVariable Long id, Authentication authentication) {
+        return complaintDetails.viewDetails(id, authentication.getName());
     }
 
 }
