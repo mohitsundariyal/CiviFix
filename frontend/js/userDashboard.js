@@ -30,9 +30,10 @@ function getStatusInfo(status) {
   }
 }
 
-//date formate
-function newformateDate(dateStr){
-  return "Date:"+dateStr.slice(0,10)+ " Time:" + dateStr.slice(12,16);    
+// Date format
+function newformateDate(dateStr) {
+  return "Date: " + dateStr.slice(0, 10) +
+         " Time: " + dateStr.slice(11, 16);
 }
 
 function escapeHtml(str) {
@@ -60,7 +61,7 @@ function renderTable(complaints) {
   if (complaints.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="4" style="text-align:center;">No complaints yet</td>
+        <td colspan="5" style="text-align:center;">No complaints yet</td>
       </tr>`;
     return;
   }
@@ -73,6 +74,7 @@ function renderTable(complaints) {
         <td><span class="dept-text">${escapeHtml(c.address)}</span></td>
         <td>${newformateDate(c.createdAt)}</td>
         <td><span class="status-text ${status.cls}">${status.text}</span></td>
+        <td><a href="details.html?id=${c.id}">View detail</a></td>
       </tr>`;
   }).join("");
 }

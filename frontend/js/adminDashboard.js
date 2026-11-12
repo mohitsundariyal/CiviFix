@@ -68,7 +68,7 @@ async function loadComplaints() {
       rows += "<td>" + formatDateTime(c.createdAt) + "</td>";
       rows += "<td>" + c.status + "</td>";
       rows += "<td>" + (c.priority || "-") + "</td>";
-      rows += "<td><button>Update</button> <a href='ticket-details.html?id=" + c.id + "'>View</a></td>";
+      rows += "<td><button>Update</button> <a href='details.html?id=" + c.id + "'>View</a></td>";
       rows += "</tr>";
     }
 
