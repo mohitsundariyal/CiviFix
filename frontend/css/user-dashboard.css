@@ -21,6 +21,23 @@ body {
     border-bottom: 1px solid #e2e8f0;
 }
 
+.dustbin-icon {
+    height: 20px;
+    width: 20px;
+}
+
+.dustbin-container {
+    height: 35px;
+    width: 35px;
+    background: #ffb4b4;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 .logo {
     display: flex;
     align-items: center;

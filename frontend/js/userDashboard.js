@@ -61,7 +61,7 @@ function renderTable(complaints) {
   if (complaints.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="5" style="text-align:center;">No complaints yet</td>
+        <td colspan="6" style="text-align:center;">No complaints yet</td>
       </tr>`;
     return;
   }
@@ -75,6 +75,15 @@ function renderTable(complaints) {
         <td>${newformateDate(c.createdAt)}</td>
         <td><span class="status-text ${status.cls}">${status.text}</span></td>
         <td><a href="details.html?id=${c.id}">View detail</a></td>
+<td>
+    <div class="dustbin-container">
+        <img 
+            class="dustbin-icon" 
+            src="../images/Icons/three.png" 
+            alt="Delete"
+        >
+    </div>
+</td>
       </tr>`;
   }).join("");
 }
