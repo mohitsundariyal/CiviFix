@@ -1,133 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css"/>
-    <title>Landing page</title>
+    <title>CiviFix — Report. Track. Resolve.</title>
+<base target="_blank">
 </head>
 <body>
 
-<!-- header-->
+<!-- ================= HEADER ================= -->
 <header class="site-header">
     <div class="container header-container">
-        <!-- logo and Name-->
-        <div class="brand">
-<img 
-    src="images\CiviFix-logo.svg" 
-    alt="CiviFix logo" 
-    class="brand-logo"
->            <span class="brand-name">CiviFix</span>
-        </div>
+        <!-- Logo -->
+        <a href="#" class="brand">
+            <img src="images/logo/CiviFix-logo.svg" alt="CiviFix logo" class="brand-logo">
+            <span class="brand-name">CiviFix</span>
+        </a>
 
-        <!-- Navigation-->
+        <!-- Navigation -->
         <nav class="main-nav">
-            <a href="#" class="nav-text">About</a>
-            <a href="#" class="nav-text">How it Works</a>
-            <a href="#" class="nav-text">Emergency Contacts</a>
+            <a href="#about" class="nav-text">About</a>
+            <a href="#how-it-works" class="nav-text">How it Works</a>
+            <a href="#emergency" class="nav-text">Emergency Contacts</a>
         </nav>
 
-        <!--Header Actions-->
+        <!-- Actions -->
         <div class="header-actions">
             <a href="pages/login.html" class="login-link">Login</a>
             <a href="pages/signup.html" class="register-btn">Register</a>
-            <button class="profile-btn">    
-                <img 
-        src="images/icons/user-logo-32.png"
-        alt="User Profile"
-        class="user-icon"></button>
+            <button class="profile-btn" aria-label="User profile">
+                <img src="images/icons/user-logo-32.png" alt="User Profile" class="user-icon">
+            </button>
+        </div>
+    </div>
 </header>
-
-
 
 <main>
 
-    <!--hero section-->
+    <!-- ================= HERO ================= -->
     <section class="hero">
         <div class="container hero-container">
-        <!--title-->
-        <h1 class="hero-heading">Report. Track. Resolve.</h1>
-
-        <!--description-->
-        <p class="hero-desc">A modern municipal portal connecting neighborhood residents
-                    with city repair crews to <br> fix urban issues quickly,
-                    transparently, and accountably-first.</p>
-            
-        <!--hero action-->
-        <div class="hero-actions">
-                <a href="#" class="hero-btn primary-btn">Register Citizen Account</a>
-                <a href="pages/signup.html" class="hero-btn secondary-btn">Sign In</a>
-            </div>
-        </div>
-
-    <!--Lifecycle-->
-    <section class="lifecycle">
-
-    <p style="padding-left:20px;">PROCESS ARCHITECTURE</p>
-    <h1 class="lifecycle-heading">Civic Issue Lifecycle</h1>
-<br>
-    <div class="cycle-div">
-        <div class="card">
-            <div class="card-formate">
-                <br>
-            <img class="cycle-icon" src="images/Icons/add-photo.png" alt="camara"/>
-            <br>
-            <p>STAGE 01 Intake</p>
-            <br>
-            <br>
-            <h3>Report an Issue</h3>
-            <br>
-            <br>
-            <p>Capture photos of road potholes, waste
-accumulation, unlit street lamps, or water leaks.
-Automatic GPS metadata places your ticket instantly
-onto the city engineering heat map.</p>
+            <span class="hero-eyebrow">MUNICIPAL CONNECTIVITY PORTAL</span>
+            <h1 class="hero-heading">Report. Track. Resolve.</h1>
+            <p class="hero-desc">
+                A modern municipal portal connecting neighborhood residents
+                with city repair crews to fix urban issues quickly,
+                transparently, and accountably.
+            </p>
+            <div class="hero-actions">
+                <a href="pages/signup.html" class="hero-btn primary-btn">Register Citizen Account</a>
+                <a href="pages/login.html" class="hero-btn secondary-btn">Sign In</a>
             </div>
 
+
         </div>
-
-        <div class="card">
-            <div class="card-formate">
-                <br>
-            <img class="cycle-icon" src="images/Icons/diagram.png" alt="camara"/>
-            <br>
-            <p>STAGE 02 Observation</p>
-            <br>
-            <br>
-            <h3>Track Status</h3>
-            <br>
-            <br>
-            <p>Stay informed with real-time state telemetry.
-Dynamic tracking indicators ensure complete
-transparency through every phase of public works
-triage.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-formate">
-                <br>
-            <img class="cycle-icon" src="images/Icons/error.png" alt="camara"/>
-            <br>
-            <p>STAGE 03 Closure</p>
-            <br>
-            <br>
-            <h3>Get It Resolved</h3>
-            <br>
-            <br>
-            <p>Prompt city crew deployment, mandatory before-
-and-after photo verification, and citizen
-confirmation closure ensure issues stay solved
-permanently.</p>
-            </div>
-        </div>
-
-    </div>
-
-    <section>
-
     </section>
+
+    <!-- ================= LIFECYCLE ================= -->
+    <section class="lifecycle" id="how-it-works">
+        <div class="container">
+            <p class="section-eyebrow">PROCESS ARCHITECTURE</p>
+            <h2 class="lifecycle-heading">Civic Issue Lifecycle</h2>
+
+            <div class="cycle-div">
+
+                <article class="card">
+                    <div class="card-format">
+                        <div class="icon-badge">
+                            <img class="cycle-icon" src="images/Icons/add-photo.png" alt="Report an issue icon">
+                        </div>
+                        <p class="card-stage">STAGE 01 · Intake</p>
+                        <h3>Report an Issue</h3>
+                        <p class="card-text">
+                            Capture photos of road potholes, waste accumulation,
+                            unlit street lamps, or water leaks. Automatic GPS
+                            metadata places your ticket instantly onto the city
+                            engineering heat map.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-format">
+                        <div class="icon-badge">
+                            <img class="cycle-icon" src="images/Icons/diagram.png" alt="Track status icon">
+                        </div>
+                        <p class="card-stage">STAGE 02 · Observation</p>
+                        <h3>Track Status</h3>
+                        <p class="card-text">
+                            Stay informed with real-time state telemetry. Dynamic
+                            tracking indicators ensure complete transparency
+                            through every phase of public works triage.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-format">
+                        <div class="icon-badge">
+                            <img class="cycle-icon" src="images/Icons/error.png" alt="Resolution icon">
+                        </div>
+                        <p class="card-stage">STAGE 03 · Closure</p>
+                        <h3>Get It Resolved</h3>
+                        <p class="card-text">
+                            Prompt city crew deployment, mandatory before-and-after
+                            photo verification, and citizen confirmation closure
+                            ensure issues stay solved permanently.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
 </main>
 
-<footer></footer>
+<footer class="site-footer">
+    <div class="container footer-container">
+        <span>© 2026 CiviFix. Connecting citizens to city crews.</span>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
