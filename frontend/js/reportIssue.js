@@ -67,7 +67,7 @@ document.getElementById("complaint-form").addEventListener("submit", async (e) =
 
 
 //leaflet
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([30.272680,78.000970], 18);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 
