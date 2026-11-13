@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CiviFix - Basic Admin Dashboard</title>
+    <title>CiviFix - Admin Dashboard</title>
     <link rel="stylesheet" href="../css/admin-dashboard.css">
 </head>
 <body>
@@ -15,18 +15,28 @@
         </div>
         <nav class="nav-links">
             <a href="admin-dashboard.html" class="active">Complaints</a>
-            <a href="#">Suspicious Complaints</a>
         </nav>
         <div class="user-profile">
             <span>Eleanor Vance (Ward 7)</span>
-            <button class="btn-logout">Logout</button>
+            <button class="btn-logout" type="button">Logout</button>
         </div>
     </header>
 
     <!-- Main Container -->
     <main class="dashboard-container">
 
-        <!-- Basic Complaints Table -->
+        <!-- Search & Filter Controls -->
+        <section class="controls-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by title, address, or user...">
+            <div class="filter-tabs">
+                <button class="tab active" data-filter="ALL">All</button>
+                <button class="tab" data-filter="HIGH">High Priority</button>
+                <button class="tab" data-filter="MEDIUM">Medium Priority</button>
+                <button class="tab" data-filter="LOW">Low Priority</button>
+            </div>
+        </section>
+
+        <!-- Complaints Table -->
         <section class="table-container">
             <table class="complaint-table">
                 <thead>
@@ -43,6 +53,7 @@
                     </tr>
                 </thead>
                 <tbody id="complaintTable">
+                    <!-- Dynamic rows will be inserted here -->
                 </tbody>
             </table>
         </section>

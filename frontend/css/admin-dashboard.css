@@ -9,7 +9,7 @@
 body {
     background-color: #f8fafc;
     color: #333333;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Navbar */
@@ -61,7 +61,7 @@ body {
 
 /* Container */
 .dashboard-container {
-    max-width: 1200px;
+    max-width: 1350px;
     margin: 20px auto;
     padding: 0 15px;
 }
@@ -104,113 +104,41 @@ body {
     border-color: #1d4ed8;
 }
 
-/* Table Styling 
-.table-container {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.complaint-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.complaint-table th {
-    background-color: #f8fafc;
-    font-size: 11px;
-    color: #475569;
-    padding: 30px 20px;
-    text-align:center;
-    border-bottom: 1px solid #cbd5e1;
-    font-weight:700;
-}
-
-.complaint-table td {
-    padding: 7px 7px;
-    border-bottom: 1px solid #e2e8f0;
-    vertical-align: middle;
-}
-
-.subtext {
-    font-size: 12px;
-    color: #64748b;
-    margin-top: 2px;
-}
-
-.status-text {
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.status-text.in-progress { color: #d97706; }
-.status-text.pending { color: #dc2626; }
-.status-text.resolved { color: #16a34a; }
-
-.action-cell {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn-update {
-    background-color: #1d4ed8;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.link-view {
-    color: #1d4ed8;
-    text-decoration: none;
-    font-size: 12px;
-}
-/*
-
-/* Table Styling */
+/* Table Styling - No Horizontal Scroll */
 .table-container {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    overflow-x: auto;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    /* overflow-x hata diya gaya hai taaki scroll na aaye */
 }
 
 .complaint-table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
-}
-
-.complaint-table caption {
-    padding: 16px 20px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #1e293b;
-    text-align: left;
+    table-layout: fixed; /* Columns ko distribute karne ke liye */
 }
 
 .complaint-table th {
     background-color: #f1f5f9;
-    font-size: 11px;
+    font-size: 10px;
     color: #475569;
-    padding: 14px 16px;
+    padding: 12px 8px;
     text-align: left;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     border-bottom: 2px solid #cbd5e1;
     font-weight: 700;
 }
 
 .complaint-table td {
-    padding: 12px 16px;
+    padding: 10px 8px;
     border-bottom: 1px solid #e2e8f0;
     vertical-align: middle;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* Zebra stripes + hover */
@@ -230,27 +158,21 @@ body {
     border-bottom: none;
 }
 
-/* Long text control (title/address) */
-.complaint-table td {
-    max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .subtext {
-    font-size: 12px;
+    font-size: 11px;
     color: #64748b;
     margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Status + Priority badges */
 .status-text,
 .badge {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
 }
 
@@ -265,26 +187,30 @@ body {
 .action-cell {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+}
+
+.action-cell select {
+    padding: 4px;
+    font-size: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    max-width: 90px;
 }
 
 .btn-update {
     background-color: #1d4ed8;
     color: white;
     border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 11px;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition: background-color 0.2s ease;
 }
 
 .btn-update:hover {
     background-color: #1e40af;
-}
-
-.btn-update:active {
-    transform: scale(0.96);
 }
 
 .link-view {

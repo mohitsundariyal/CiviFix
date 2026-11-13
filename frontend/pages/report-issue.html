@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CiviFix - File a Complaint</title>
-
-    
-    <!-- leaflet header files-->
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
     <link rel="stylesheet" href="../css/report-issue.css">
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
 
@@ -37,7 +32,9 @@
     <main class="dashboard-container">
 
         <!-- Navigation Back Link -->
-        <div id="backDashBoard"><a href="user-dashboard.html" class="back-link">Back to Dashboard</a></div>
+        <div id="backDashBoard">
+            <a href="user-dashboard.html" class="back-link">Back to Dashboard</a>
+        </div>
 
         <!-- Header Title -->
         <div class="form-header">
@@ -55,26 +52,30 @@
                     <h2>1. Incident Details</h2>
 
                     <div class="form-group">
-                        <label>Complaint Title *</label>
+                        <label for="title">Complaint Title *</label>
                         <input type="text" placeholder="e.g., Deep road pothole on Elm St" id="title" required>
                     </div>
 
                     <div class="form-group">
                         <label>Municipal Category *</label>
-                        <input type="radio" name="category" value="pothole / road" required> Potholes / Road Damage<br>
-                        <input type="radio" name="category" value="garbage"> Garbage Collection<br>
-                        <input type="radio" name="category" value="streetlight"> Streetlight Issues<br>
-                        <input type="radio" name="category" value="drainage"> Drainage Problems<br>
+                        <div class="category-options">
+                            <label class="radio-label"><input type="radio" name="category" value="pothole / road" required> Potholes / Road Damage</label>
+                            <label class="radio-label"><input type="radio" name="category" value="garbage"> Garbage Collection</label>
+                            <label class="radio-label"><input type="radio" name="category" value="streetlight"> Streetlight Issues</label>
+                            <label class="radio-label"><input type="radio" name="category" value="drainage"> Drainage Problems</label>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Detailed Description *</label>
+                        <label for="detailedDescription">Detailed Description *</label>
                         <textarea rows="4" id="detailedDescription" required placeholder="Describe the issue in detail..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label>Photo Evidence *</label>
-                        <input type="file" name="photo" accept="image/*" id="image" required>
+                        <label for="image">Photo Evidence *</label>
+                        <div class="upload-box">
+                            <input type="file" name="photo" accept="image/*" id="image" required>
+                        </div>
                     </div>
                 </div>
 
@@ -83,11 +84,14 @@
                     <h2>2. Location Details</h2>
 
                     <div class="form-group">
-                        <label>Street Address / Landmark *</label>
-                        <input type="text" placeholder="Enter street address or landmark" id="address" required>
+                        <label for="address">Street Address / Landmark *</label>
+                        <input type="text" placeholder="Enter street address or double-click on map" id="address" required>
                     </div>
 
-                    <div id="map"></div>
+                    <div class="form-group">
+                        <label>Select Location on Map (Double Click)</label>
+                        <div id="map"></div>
+                    </div>
                 </div>
 
             </div>
