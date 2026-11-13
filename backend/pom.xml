@@ -39,6 +39,15 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+
+
+		<!-- cloudinary -->
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http5</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
 		<!-- oauth2 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
