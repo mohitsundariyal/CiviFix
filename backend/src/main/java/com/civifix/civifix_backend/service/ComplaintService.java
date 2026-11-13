@@ -9,39 +9,40 @@ import com.civifix.civifix_backend.entity.Priority;
 import com.civifix.civifix_backend.entity.User;
 import com.civifix.civifix_backend.repository.ComplaintRepository;
 import com.civifix.civifix_backend.repository.UserRepository;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
-import java.nio.file.Files;
-import org.springframework.beans.factory.annotation.Value;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ComplaintService {
 
-    //test photos folder
-    @Value("${file.upload-dir}")
-    private String uploadDir;
-
     private final IssueDetectionService issueDetectionService;
+    private final CloudinaryImageService cloudinaryImageService;
     private final ComplaintRepository complaintRepository;
     private final UserRepository userRepository;
 
-    public ComplaintService(ComplaintRepository complaintRepository,UserRepository userRepository,IssueDetectionService issueDetectionService){
+    public ComplaintService(ComplaintRepository complaintRepository,
+                            UserRepository userRepository,
+                            IssueDetectionService issueDetectionService,
+                            CloudinaryImageService cloudinaryImageService) {
         this.complaintRepository = complaintRepository;
         this.userRepository = userRepository;
         this.issueDetectionService = issueDetectionService;
+        this.cloudinaryImageService = cloudinaryImageService;
     }
 
-    public Complaint createComplaint(ComplaintRequestDto requestDto,MultipartFile image, String email){
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED,"user not found"));
+    public Complaint createComplaint(ComplaintRequestDto requestDto, MultipartFile image, String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "user not found"));
+
         Complaint complaint = new Complaint();
         complaint.setTitle(requestDto.getTitle());
         complaint.setDescription(requestDto.getDescription());
@@ -50,10 +51,16 @@ public class ComplaintService {
         complaint.setCreatedAt(LocalDateTime.now());
         complaint.setStatus(ComplaintStatus.PENDING);
 
-        String fileName = saveImage(image);
-        complaint.setImagePath(fileName);
+        // 1. check the photo (present, JPG / PNG / WEBP)
+        validateImage(image);
 
-        String issue = issueDetectionService.detect(Paths.get(uploadDir).resolve(fileName));
+        // 2. run the model on the photo bytes
+        String issue;
+        try {
+            issue = issueDetectionService.detect(image.getBytes());
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not read image");
+        }
 
         if (issue == null) {
             complaint.setDetectedIssue("Unknown");
@@ -63,6 +70,13 @@ public class ComplaintService {
             complaint.setPriority(issueDetectionService.getPriority(issue));
         }
 
+        // 3. upload the photo to Cloudinary and keep its URL
+        Map data = cloudinaryImageService.upload(image);
+        Object imageUrl = data.get("secure_url");
+        if (imageUrl == null) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Image upload failed");
+        }
+        complaint.setImagePath((String) imageUrl);
 
         complaint.setUser(user);
         return complaintRepository.save(complaint);
@@ -75,44 +89,25 @@ public class ComplaintService {
                 .toList();
     }
 
-    private String saveImage(MultipartFile image) {
+    private void validateImage(MultipartFile image) {
         if (image == null || image.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image is required");
         }
 
         String type = image.getContentType();
-        String extension;
-        if ("image/jpeg".equals(type)) {
-            extension = ".jpg";
-        } else if ("image/png".equals(type)) {
-            extension = ".png";
-        } else if ("image/webp".equals(type)) {
-            extension = ".webp";
-        } else {
+        if (!"image/jpeg".equals(type) && !"image/png".equals(type) && !"image/webp".equals(type)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Only JPG, PNG or WEBP images are allowed");
-        }
-
-        try {
-            Path folder = Paths.get(uploadDir);
-            Files.createDirectories(folder);
-
-            String fileName = UUID.randomUUID() + extension;
-            Files.copy(image.getInputStream(), folder.resolve(fileName));
-
-            return fileName;
-        } catch (IOException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Could not save image");
         }
     }
 
-    public Map<String, List<AdminComplaintDto>> responseAdmin(){
-        List <AdminComplaintDto> high = new ArrayList<>();
-        List <AdminComplaintDto> low = new ArrayList<>();
-        List <AdminComplaintDto> medium = new ArrayList<>();
+    public Map<String, List<AdminComplaintDto>> responseAdmin() {
+        List<AdminComplaintDto> high = new ArrayList<>();
+        List<AdminComplaintDto> low = new ArrayList<>();
+        List<AdminComplaintDto> medium = new ArrayList<>();
 
         List<Complaint> complaints = complaintRepository.findAllByOrderByCreatedAtDesc();
 
-        for(int i=0;i<complaints.size();i++){
+        for (int i = 0; i < complaints.size(); i++) {
             Complaint c = complaints.get(i);
             AdminComplaintDto dto = new AdminComplaintDto();
             dto.setId(c.getId());
@@ -123,30 +118,24 @@ public class ComplaintService {
             dto.setCategory(c.getCategory());
             dto.setAddress(c.getAddress());
             dto.setUserEmail(c.getUser().getEmail());
-            if(c.getPriority()==Priority.HIGH){
+
+            if (c.getPriority() == Priority.HIGH) {
                 dto.setPriority("HIGH");
                 high.add(dto);
-            }else if(c.getPriority()==Priority.LOW){
+            } else if (c.getPriority() == Priority.LOW) {
                 dto.setPriority("LOW");
                 low.add(dto);
-            }else{
+            } else {
                 dto.setPriority("MEDIUM");
                 medium.add(dto);
             }
-
-
         }
 
-        Map<String, List<AdminComplaintDto>> result  = new LinkedHashMap<>();
+        Map<String, List<AdminComplaintDto>> result = new LinkedHashMap<>();
         result.put("HIGH", high);
-        result.put("LOW",low);
-        result.put("MEDIUM",medium);
+        result.put("LOW", low);
+        result.put("MEDIUM", medium);
 
         return result;
-
-
     }
-
-
-
 }

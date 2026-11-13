@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.nio.FloatBuffer;
 import java.nio.file.Path;
 import java.util.Collections;
@@ -88,15 +89,14 @@ public class IssueDetectionService {
             "Potholes and RoadCracks"
     };
 
-    public String detect(Path imagePath) {
-
+    public String detect(byte[] imageBytes) {
         if (session == null) {
             return null;
         }
 
         try {
             // read photo
-            BufferedImage image = ImageIO.read(imagePath.toFile());
+            BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageBytes));
             if (image == null) {
                 return null;
             }

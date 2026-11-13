@@ -29,8 +29,13 @@ async function loadComplaintDetails() {
         document.getElementById("status").textContent = complaint.status;
         document.getElementById("createdAt").textContent = complaint.createdAt;
 
-        document.getElementById("complaintImage").src =
-            `${API}/uploads/${complaint.imagePath}`;
+const img = document.getElementById("complaintImage");
+
+if (complaint.imagePath && complaint.imagePath.startsWith("http")) {
+    img.src = complaint.imagePath;
+} else {
+    img.style.display = "none";  
+}
 
     } catch (error) {
         console.error(error);
