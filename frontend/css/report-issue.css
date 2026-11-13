@@ -1,15 +1,4 @@
-/* Back Link & Header */
-.back-link {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color:white;
-}
-#backDashBoard:hover {
-    background: rgb(27, 0, 202);
-    cursor: pointer;
-}
+
 .form-header {
     margin-bottom: 25px;
 }
@@ -226,11 +215,24 @@ body {
 #backDashBoard {
     height: 35px;
     width: 150px;
-    background: rgb(106, 83, 255);
+    background:#1554d1 ;
     border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+/* Back Link & Header */
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color:white;
+}
+#backDashBoard:hover {
+    background: #3364c6;
+    cursor: pointer;
+    transform: translateY(-2px);
 }
 
 

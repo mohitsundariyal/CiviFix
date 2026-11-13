@@ -13,7 +13,9 @@ if (url && url.startsWith("https://res.cloudinary.com/")) {
 }
 
 document.getElementById("btn-back").addEventListener("click", () => {
-  if (window.history.length > 1) {
+  if (document.referrer && document.referrer !== window.location.href) {
+    window.location.href = document.referrer;
+  } else if (window.history.length > 1) {
     window.history.back();
   } else {
     window.location.href = "admin-dashboard.html"; 
