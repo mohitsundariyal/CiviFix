@@ -110,13 +110,12 @@ body {
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
-    /* overflow-x hata diya gaya hai taaki scroll na aaye */
 }
 
 .complaint-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Columns ko distribute karne ke liye */
+    table-layout: fixed;
 }
 
 .complaint-table th {
@@ -131,6 +130,17 @@ body {
     font-weight: 700;
 }
 
+/* NEW: Column widths (total = 100%) */
+.complaint-table th:nth-child(1) { width: 12%; }  /* Title */
+.complaint-table th:nth-child(2) { width: 16%; }  /* Address */
+.complaint-table th:nth-child(3) { width: 9%;  }  /* Category */
+.complaint-table th:nth-child(4) { width: 10%; }  /* User */
+.complaint-table th:nth-child(5) { width: 11%; }  /* Date & Time */
+.complaint-table th:nth-child(6) { width: 9%;  }  /* Status */
+.complaint-table th:nth-child(7) { width: 5%;  }  /* Priority */
+.complaint-table th:nth-child(8) { width: 18%; }  /* Action */
+.complaint-table th:nth-child(9) { width: 5%;  }  /* Proof */
+
 .complaint-table td {
     padding: 10px 8px;
     border-bottom: 1px solid #e2e8f0;
@@ -139,6 +149,11 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* NEW: Action column ka content kate nahi */
+.complaint-table td:nth-child(8) {
+    overflow: visible;
 }
 
 /* Zebra stripes + hover */
@@ -190,12 +205,14 @@ body {
     gap: 6px;
 }
 
+/* CHANGED: max-width hata diya, flex add kiya */
 .action-cell select {
     padding: 4px;
     font-size: 11px;
     border: 1px solid #cbd5e1;
     border-radius: 4px;
-    max-width: 90px;
+    flex: 1;
+    min-width: 0;
 }
 
 .btn-update {
@@ -207,6 +224,7 @@ body {
     font-size: 11px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    flex-shrink: 0;   /* NEW */
 }
 
 .btn-update:hover {

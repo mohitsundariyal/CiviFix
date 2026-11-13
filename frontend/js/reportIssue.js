@@ -4,6 +4,7 @@ const token = localStorage.getItem("token");
 if (!token) {
     window.location.href = "login.html";
 }
+let currentMarker = null;
 
 const fullName = localStorage.getItem("fullName");
 if (fullName) {
@@ -64,8 +65,14 @@ document.getElementById("complaint-form").addEventListener("submit", async (e) =
     }
 });
 
-var map = L.map('map').setView([30.272680, 78.000970], 14);
+async function getPlaceName(lat, lng) {
+    const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.display_name; // full address
+}
 
+var map = L.map('map', { doubleClickZoom: false }).setView([30.272680, 78.000970], 14);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; OpenStreetMap contributors'
@@ -76,13 +83,23 @@ setTimeout(() => {
     map.invalidateSize();
 }, 200);
 
-map.on("dblclick", function(e) {
+map.on("dblclick", async function (e) {
     const lat = e.latlng.lat.toFixed(6);
     const lng = e.latlng.lng.toFixed(6);
-    document.getElementById("address").value = `${lat}, ${lng}`;
+
+    const addressInput = document.getElementById("address");
+    addressInput.value = "Address dhoondh rahe hain...";
 
     if (currentMarker) {
         map.removeLayer(currentMarker);
     }
     currentMarker = L.marker([lat, lng]).addTo(map);
+
+    try {
+        const placeName = await getPlaceName(lat, lng);
+        addressInput.value = placeName || `${lat}, ${lng}`;
+    } catch (err) {
+        console.error(err);
+        addressInput.value = `${lat}, ${lng}`;
+    }
 });
