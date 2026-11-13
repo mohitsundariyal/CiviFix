@@ -1,12 +1,15 @@
 /* Back Link & Header */
 .back-link {
     display: inline-block;
-    color: #1d4ed8;
     text-decoration: none;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    color:white;
 }
-
+#backDashBoard:hover {
+    background: rgb(27, 0, 202);
+    cursor: pointer;
+}
 .form-header {
     margin-bottom: 25px;
 }
@@ -220,13 +223,17 @@ body {
 }
 
 /* Back Link & Header */
-.back-link {
-    display: inline-block;
-    color: #1d4ed8;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 15px;
+#backDashBoard {
+    height: 35px;
+    width: 150px;
+    background: rgb(106, 83, 255);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 .form-header {
     margin-bottom: 25px;
@@ -392,3 +399,5 @@ body {
     border-radius:14px;
     border:2px solid rgb(122, 122, 122);
 }
+
+
