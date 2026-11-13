@@ -19,5 +19,6 @@ public class AdminComplaintDto {
     private LocalDateTime createdAt;
     private ComplaintStatus status;
     private String category;
-
+    private String imagePath;
+    private String detectedIssue;
 }

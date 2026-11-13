@@ -118,6 +118,8 @@ public class ComplaintService {
             dto.setCategory(c.getCategory());
             dto.setAddress(c.getAddress());
             dto.setUserEmail(c.getUser().getEmail());
+            dto.setImagePath(c.getImagePath());
+            dto.setDetectedIssue(c.getDetectedIssue());
 
             if (c.getPriority() == Priority.HIGH) {
                 dto.setPriority("HIGH");
@@ -137,5 +139,13 @@ public class ComplaintService {
         result.put("MEDIUM", medium);
 
         return result;
+    }
+    public Complaint updateStatus(Long id, ComplaintStatus status) {
+        Complaint complaint = complaintRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Complaint not found"));
+
+        complaint.setStatus(status);
+        return complaintRepository.save(complaint);
     }
 }

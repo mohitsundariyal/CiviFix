@@ -46,7 +46,7 @@ body {
 .dustbin-container:hover {
     height: 38px;
     width: 38px;
-    background: #ffb1b1;
+    background: #d2c3c3;
     border-radius: 50%;
 
     display: flex;
