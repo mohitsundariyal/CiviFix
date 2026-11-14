@@ -46,4 +46,10 @@ public class ComplaintController {
         return complaintDetails.viewDetails(id, authentication.getName());
     }
 
+    @DeleteMapping("/{id}")
+    public Map<String, String> delete(@PathVariable Long id, Authentication authentication) {
+        complaintService.deleteComplaint(id, authentication.getName());
+        return Map.of("message", "Complaint deleted successfully");
+    }
+
 }

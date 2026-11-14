@@ -3,9 +3,7 @@ package com.civifix.civifix_backend.controller;
 
 import com.civifix.civifix_backend.dto.ComplaintResponseDto;
 import com.civifix.civifix_backend.service.ComplaintService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;
@@ -25,4 +23,5 @@ public class DashboardController {
         return complaintService.getMyComplaints(authentication.getName());
 
     }
+
 }

@@ -148,4 +148,17 @@ public class ComplaintService {
         complaint.setStatus(status);
         return complaintRepository.save(complaint);
     }
+
+    public void deleteComplaint(Long id, String email) {
+        Complaint c = complaintRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Complaint not found"));
+
+        if (!c.getUser().getEmail().equals(email)) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Complaint not found");
+        }
+
+        complaintRepository.delete(c);
+    }
 }

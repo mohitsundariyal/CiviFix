@@ -8,4 +8,8 @@ import java.util.Optional;
 
 public interface ComplaintRepository extends JpaRepository<Complaint, Long> {
     List<Complaint> findByUserEmailOrderByCreatedAtDesc(String email);
-    List<Complaint> findAllByOrderByCreatedAtDesc();}
+    List<Complaint> findAllByOrderByCreatedAtDesc();
+
+
+    void deleteById(Long aLong);
+}
